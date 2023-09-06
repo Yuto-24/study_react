@@ -20,7 +20,7 @@ const conductDel = (delButton, isComp = false) => {
 
 const conductComp = (mvButton) => {
     // 押されたボタンの親タグの親タグを未完了リストから完了リストへ移動
-    const completeText = mvButton.parentNode.getElementsByTagName("p")[0].textContent;
+    const completeText = mvButton.parentNode.firstElementChild.textContent;
     // console.log(`origin text: ${completeText}`);
 
     // 要素の削除
@@ -31,7 +31,7 @@ const conductComp = (mvButton) => {
 }
 
 const conductReturn = (mvButton) => {
-    const completeText = mvButton.parentNode.getElementsByTagName("p")[0].textContent;
+    const completeText = mvButton.parentNode.firstElementChild.textContent;
     // console.log(`origin text: ${completeText}`);
 
     // 要素の削除
