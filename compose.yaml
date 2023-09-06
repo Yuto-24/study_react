@@ -1,15 +1,26 @@
 services:
-  app:
-    container_name: app
+  study_react:
+    container_name: study_react_${USER_NAME}
     build:
-      context: .
+      context: ./
       dockerfile: Dockerfile
     volumes:
       - type: bind
-        source: ./app
-        target: /usr/src/app
-      #"react-app"の部分がプロジェクト名になる
-    command: sh -c "cd react-app && yarn start"
+        source: ./
+        target: /projects
+    #"react-app"の部分がプロジェクト名になる
+    # command: sh -c "cd /projects/ && yarn start"
     ports:
-      - 3000:3000
+      - 8001:3000
     stdin_open: true #標準入力をコンテナと紐付ける
+    shm_size: "8gb"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    external: true
